@@ -65,7 +65,7 @@ void
                         newSampleFeatures = newFeatOne.block(0, 0, this->budget, 256);
                     } else {
                         newSampleFeatures.block(0, 0, this->budget - addSize, 256) =
-                            samples[track_id].block(addSize - 1, 0, this->budget - addSize, 256).eval();
+                            samples[track_id].block(oldSize -(this->budget-addSize), 0, this->budget - addSize, 256).eval();
                         newSampleFeatures.block(this->budget - addSize, 0, addSize,256) = newFeatOne;
                     }
                     samples[track_id] = newSampleFeatures;
@@ -74,7 +74,7 @@ void
                         samples[track_id] = newFeatOne.block(0, 0, this->budget, 256);
                     } else {
                         samples[track_id].block(0, 0, this->budget - addSize, 256) =
-                            samples[track_id].block(addSize - 1, 0, this->budget - addSize, 256).eval();
+                            samples[track_id].block(oldSize -(this->budget-addSize), 0, this->budget - addSize, 256).eval();
                         samples[track_id].block(this->budget - addSize, 0, addSize, 256) = newFeatOne;
                     }
                 }
